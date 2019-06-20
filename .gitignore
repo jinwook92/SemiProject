@@ -1,0 +1,11 @@
+.settings/
+.project
+.classpath
+*.iml
+.idea/
+out/
+_windows/
+codestyles/
+
+
+
