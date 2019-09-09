@@ -11,15 +11,15 @@ import com.kic.comm.ForwardAction;
 
 public class AddAction implements Action {
 
-	@Override
-	public ForwardAction execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		ForwardAction act=new ForwardAction();
-		act.setRedirect(false);
-		act.setPath("/board/add.jsp");
-		
-		return act;
-	}
+    @Override
+    public ForwardAction execute(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        ForwardAction act = new ForwardAction();
+        act.setRedirect(false);
+        act.setPath("/board/add.jsp");
+
+        return act;
+    }
 
 }

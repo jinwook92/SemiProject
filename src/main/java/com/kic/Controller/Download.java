@@ -22,51 +22,52 @@ import oracle.net.aso.e;
  */
 @WebServlet("/download.down")
 public class Download extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
- 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doReq(request, response);
-	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException 
-	{
-		// TODO Auto-generated method stub
-		 doReq(request,response);
-	}
-	
-	private void doReq(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{
-	 	 String file=request.getParameter("fname");
-	     String folder = request.getServletContext().getRealPath("/upload");
-	    
-		 String filePath = folder + "/" + file;
-		 FileInputStream fin=null;
-		  try{
-			    File f= new File(filePath);
-		         byte b[] = new byte[100];
-				response.setContentType("application/octet-stream");
-				response.setHeader("Content-Disposition", "attachment;filename="+f.getName());
-				response.setContentLength((int) f.length());
-		    	
-				if (f.isFile()) // ÆÄÀÏÀÌ ÀÖÀ»°æ¿ì
-				{
-					
-					fin= new FileInputStream(f);
-					ServletOutputStream out= response.getOutputStream();
-						
-					int readNum = -1;
-					while ( (readNum =fin.read(b)) != -1) {
-						out.write(b, 0, readNum);
-					}
-					     out.close();
-	           } //if
-		  }catch(Exception e)
-		  {
-			  System.out.println("e ¿¡·¯"+e);
-		  }finally{
-			  if(fin!=null) try{fin.close();} catch(IOException e){}
-		  }
-		}
+    private static final long serialVersionUID = 1L;
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        doReq(request, response);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        doReq(request, response);
+    }
+
+    private void doReq(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String file = request.getParameter("fname");
+        String folder = request.getServletContext().getRealPath("/upload");
+
+        String filePath = folder + "/" + file;
+        FileInputStream fin = null;
+        try {
+            File f = new File(filePath);
+            byte b[] = new byte[100];
+            response.setContentType("application/octet-stream");
+            response.setHeader("Content-Disposition", "attachment;filename=" + f.getName());
+            response.setContentLength((int) f.length());
+
+            if (f.isFile()) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            {
+
+                fin = new FileInputStream(f);
+                ServletOutputStream out = response.getOutputStream();
+
+                int readNum = -1;
+                while ((readNum = fin.read(b)) != -1) {
+                    out.write(b, 0, readNum);
+                }
+                out.close();
+            } //if
+        } catch (Exception e) {
+            System.out.println("e ï¿½ï¿½ï¿½ï¿½" + e);
+        } finally {
+            if (fin != null) try {
+                fin.close();
+            } catch (IOException e) {
+            }
+        }
+    }
 
 }

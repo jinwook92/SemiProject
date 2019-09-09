@@ -14,20 +14,20 @@ import com.kic.comm.ForwardAction;
 
 public class ListAction implements Action {
 
-	@Override
-	public ForwardAction execute(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	      BoardService service=BoardService.getInstance();
-	      List<MultiBoardVO> list=service.ListService();
-		   request.setAttribute("list", list);
-	      ForwardAction forward=new ForwardAction();
-	      forward.setRedirect(false);
-	      forward.setPath("/board/list.jsp");
-	      
-	      
-		return forward;
-	}
+    @Override
+    public ForwardAction execute(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        BoardService service = BoardService.getInstance();
+        List<MultiBoardVO> list = service.ListService();
+        request.setAttribute("list", list);
+        ForwardAction forward = new ForwardAction();
+        forward.setRedirect(false);
+        forward.setPath("/board/list.jsp");
+
+
+        return forward;
+    }
 
 }
 
